@@ -27,12 +27,9 @@ jobs:
         run:  docker build -t ismaelmours/lotto-number-generator .
       - name: Publish image to docker hub
         run: docker push  ismaelmours/lotto-number-generator:latest
-        
-        
-        
   deploy:
     needs: build
-    runs-on: [awsec2]
+    runs-on: [self-hosted, Linux, X64, awsec2]
     steps:
       - name: Pull Image from docker hub
         run: docker pull ismaelmours/lotto-number-generator:latest
