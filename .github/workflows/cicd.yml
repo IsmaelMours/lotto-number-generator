@@ -36,7 +36,7 @@ jobs:
     steps:
       - name: Pull Image from docker hub
         run: docker pull ismaelmours/lotto-number-generator:latest
-      - name: Delete old container
+      - name: Delete old containers
         run: docker rm -f lotto-number-generator-container
       - name: Run docker container
         run: docker run -d  -p 8080:8080 --name lotto-number-generator-container ismaelmours/lotto-number-generator:latest
