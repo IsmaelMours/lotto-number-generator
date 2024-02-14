@@ -24,7 +24,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Build docker image
-        run:  docker build -t IsmaelMours/lotto-number-generator .
+        run:  docker build -t ismaelmours/lotto-number-generator .
       - name: Publish image to your docker hub
         run: docker push IsmaelMours/lotto-number-generator:latest
         
