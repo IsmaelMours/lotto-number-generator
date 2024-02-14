@@ -32,7 +32,7 @@ jobs:
         
   deploy:
     needs: build
-    runs-on: [awsec2]
+    runs-on: [self-hosted, Linux, X64, awsec2]
     steps:
       - name: Pull Image from docker hub
         run: docker pull ismaelmours/lotto-number-generator:latest
