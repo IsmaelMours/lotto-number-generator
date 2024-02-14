@@ -34,7 +34,7 @@ jobs:
     needs: build
     runs-on: [self-hosted, Linux, X64, awsrunner]
     steps:
-      - name: Pull Image from docker hub
+      - name: Pull Image from docker your hub
         run: docker pull ismaelmours/lotto-number-generator:latest
       - name: Delete old containers
         run: docker rm -f lotto-number-generator-container
