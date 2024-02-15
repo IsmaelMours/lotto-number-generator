@@ -23,17 +23,20 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      - name: Build docker image
+      - name: Build docker your image
         run:  docker build -t ismaelmours/lotto-number-generator .
       - name: Publish image to docker hub
         run: docker push  ismaelmours/lotto-number-generator:latest
+        
+        
+        
   deploy:
     needs: build
-    runs-on: [self-hosted, Linux, X64, awsec2]
+    runs-on: [self-hosted, Linux, X64, awsrunner]
     steps:
       - name: Pull Image from docker hub
         run: docker pull ismaelmours/lotto-number-generator:latest
-      - name: Delete old container
+      - name: Delete old containers
         run: docker rm -f lotto-number-generator-container
       - name: Run docker container
         run: docker run -d  -p 8080:8080 --name lotto-number-generator-container ismaelmours/lotto-number-generator:latest
